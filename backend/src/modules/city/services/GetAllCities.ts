@@ -1,13 +1,16 @@
-import { CityRepository } from "../infra/sequelize/repositories/CityRepository";
+import { CityRepository } from '../infra/sequelize/repositories/CityRepository';
 
 class GetAllCities {
-  constructor(private citiesRepository = new CityRepository()) { }
+  constructor(private citiesRepository = new CityRepository()) {}
 
   public async execute() {
     const cities = await this.citiesRepository.getAllCities();
 
-    return cities;
+    const result = {
+      data: cities,
+    };
+    return result;
   }
 }
 
-export { GetAllCities }
+export { GetAllCities };

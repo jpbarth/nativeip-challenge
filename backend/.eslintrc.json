@@ -7,7 +7,6 @@
   "extends": [
     "airbnb-base",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
     "plugin:prettier/recommended"
   ],
   "globals": {
@@ -17,13 +16,41 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2018,
-    "sourceType": "module"
+    "sourceType": "module",
+    "tsconfigRootDir": "./"
   },
   "plugins": [
     "@typescript-eslint",
-    "prettier"
+    "prettier",
+    "import"
   ],
   "rules": {
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "interface",
+        "prefix": [
+          "I"
+        ],
+        "format": [
+          "PascalCase"
+        ]
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "_"
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.spec.ts"
+        ]
+      }
+    ],
     "prettier/prettier": [
       "error",
       {
@@ -51,10 +78,6 @@
           "_doc"
         ]
       }
-    ],
-    "semi": [
-      2,
-      "always"
     ]
   },
   "overrides": [

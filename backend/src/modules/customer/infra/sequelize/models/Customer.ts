@@ -1,8 +1,8 @@
-import { DataTypes } from "sequelize";
+import { DataTypes } from 'sequelize';
 
 import { database } from '../../../../../shared/config/database';
 
-import { City } from "../../../../city/infra/sequelize/models/City";
+import { City } from '../../../../city/infra/sequelize/models/City';
 
 const Customer = database.define('customer', {
   id: {
@@ -25,7 +25,7 @@ const Customer = database.define('customer', {
   },
   gender: {
     type: DataTypes.ENUM,
-    values: ["Female", "Male"],
+    values: ['Female', 'Male'],
     allowNull: false,
   },
   company: {

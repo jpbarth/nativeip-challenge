@@ -1,9 +1,12 @@
-import { Request, Response } from "express"
-import { GetCustomerById } from "../../../services/GetCustomerById";
-import { UpdateCustomer } from "../../../services/UpdateCustomer";
+import { Request, Response } from 'express';
+import { GetCustomerById } from '../../../services/GetCustomerById';
+import { UpdateCustomer } from '../../../services/UpdateCustomer';
 
 class CustomerController {
-  public async getCustomerById(request: Request, response: Response): Promise<Response> {
+  public async getCustomerById(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
     const { customerId } = request.params;
 
     const service = new GetCustomerById();
@@ -23,4 +26,4 @@ class CustomerController {
   }
 }
 
-export { CustomerController }
+export { CustomerController };
