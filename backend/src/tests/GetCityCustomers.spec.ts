@@ -2,6 +2,8 @@ import '../shared/config/env';
 
 import { GetCityCustomers } from '../modules/city/services/GetCityCustomers';
 
+import { AppError } from '../shared/utils/errors/AppError';
+
 const service = new GetCityCustomers();
 
 it('Should find customers of existing city', async () => {
@@ -15,4 +17,10 @@ it('Should find customers of existing city', async () => {
     expect(customer).toHaveProperty('email');
     expect(customer).toHaveProperty('company');
   });
+});
+
+it('Should not find customers of non existing city', async () => {
+  await expect(async () =>
+    service.execute(52, { page: 1, limit: 10 }),
+  ).rejects.toThrowError(AppError);
 });
