@@ -55,6 +55,12 @@ class CityRepository {
     try {
       const { page, limit } = paging;
 
+      const city = await City.findByPk(cityId);
+
+      if (!city) {
+        throw new AppError('City not found', 404);
+      }
+
       const customers = await Customer.findAndCountAll({
         attributes: ['id', 'first_name', 'last_name', 'email', 'company'],
         where: { cityId },
@@ -62,14 +68,21 @@ class CityRepository {
         offset: (page - 1) * limit,
       });
 
+      const totalPages = Math.ceil(customers.count / limit);
+      const currentPage = Math.min(paging.page, totalPages);
+
       const result = {
-        page: paging.page,
-        pages: Math.ceil(customers.count / limit),
+        page: currentPage,
+        pages: totalPages,
         data: customers.rows as unknown as ICustomer[],
       };
 
       return result;
-    } catch {
+    } catch (e) {
+      if (e instanceof AppError) {
+        throw e;
+      }
+
       throw new AppError("Error searching for city's customers");
     }
   }
