@@ -33,6 +33,7 @@ class CustomerRepository {
         gender: customer.get('gender'),
         title: customer.get('title'),
         company: customer.get('company'),
+        cityId: customer.get('cityId'),
         city: customer.city.get('name'),
       };
 
