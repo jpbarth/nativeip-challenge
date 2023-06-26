@@ -23,7 +23,10 @@ function useQueryCustomer(customerId: string) {
     return customer;
   }
 
-  return useQuery(["customer", customerId], getCustomer);
+  return useQuery(["customer", customerId], getCustomer, {
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+  });
 }
 
 export { useQueryCustomer };
