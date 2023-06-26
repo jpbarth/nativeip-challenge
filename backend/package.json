@@ -7,12 +7,11 @@
   "private": true,
   "scripts": {
     "run:dev": "ts-node-dev --files src/shared/infra/http/index.ts",
-    "run:prod": "ts-node dist/shared/infra/http/index.js",
+    "run:prod": "yarn lint && yarn test && yarn build && node dist/shared/infra/http/index.js",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "lint": "npx eslint . --ext .ts",
     "lint:fix": "npx eslint . --ext .ts --fix",
-    "test": "jest",
-    "seed": "node dist/shared/config/initializeDatabase.js"
+    "test": "jest ./src/test"
   },
   "dependencies": {
     "celebrate": "^15.0.1",

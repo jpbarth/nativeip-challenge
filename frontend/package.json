@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix src",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "run:prod": "yarn build && yarn preview"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.29.17",

@@ -1,8 +1,8 @@
 FROM node:18
 
-WORKDIR /api
+WORKDIR /app
 
-EXPOSE 3030
+EXPOSE 3032
 
 COPY . .
 
